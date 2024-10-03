@@ -33,18 +33,22 @@ export default class Home extends Component<{}, HeaderState> {
 
   render() {
     return (
-      <div className="container mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="flex flex-col items-center p-8">
+        <h2 className="text-4xl font-extrabold mb-8 text-center text-green-500 drop-shadow-lg">All Products</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">
           {this.state.data.map((item) => (
-            <a href='/about' onClick={() => window.localStorage.setItem("productID", JSON.stringify(item.id))} key={item.id} className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 w-full">
-              <img src={item.images[0]} alt={item.title} className="w-[500px] h-[450px] rounded-t-lg" />
-              <div className="p-4">
-                <h3 className="text-xl font-bold text-gray-900">{item.title}</h3>
-                <div className="flex justify-between items-center mt-4">
-                  <span className="text-lg font-semibold text-green-600">${item.price}</span>
-                  <button className="bg-green-500 text-white py-1 px-3 rounded-md hover:bg-green-600 transition-colors duration-300">
-                    Add to Cart
-                  </button>
+            <a
+              href="/about"
+              onClick={() => window.localStorage.setItem("productID", JSON.stringify(item.id))}
+              key={item.id}
+              className="bg-white rounded-lg shadow-lg transition-transform transform hover:scale-105 duration-300 overflow-hidden hover:shadow-xl"
+            >
+              <img src={item.images[0]} alt={item.title} className="w-full h-48 object-cover transition-transform duration-300 transform hover:scale-110" />
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-gray-800 hover:text-green-600 transition-colors duration-300">{item.title}</h3>
+                <div className="flex justify-between items-center mt-2">
+                  <span className="text-2xl font-bold text-green-600">${item.price}</span>
+                  <span className="text-sm text-gray-500">Category: {item.category}</span>
                 </div>
               </div>
             </a>

@@ -43,43 +43,35 @@ export class About extends Component<{}, HeaderState> {
           </h2>
           {product ? (
             <div className="md:flex md:items-center md:space-x-12">
-              <img
-                src={product.images[0]}
-                alt={product.title}
-                className="w-full h-80 object-cover rounded-lg shadow-lg"
-              />
+              <div className="md:w-1/1 mb-6 md:mb-0">
+                <img
+                  src={product.images[0] || 'https://via.placeholder.com/400'}
+                  alt={product.title}
+                  className="w-full h-80 object-cover rounded-lg shadow-lg"
+                />
+              </div>
 
               <div className="md:w-1/2 space-y-8">
                 <p className="text-xl">
-                  <span className="font-semibold text-gray-800">Title:</span>{' '}
-                  <span className="font-bold text-gray-900">
-                    {product.title}
-                  </span>
+                  <span className="font-bold text-gray-800">Title:</span>{' '}
+                  <span className="font-semibold text-gray-900">{product.title}</span>
                 </p>
                 <p className="text-xl text-green-600">
                   <span className="font-semibold text-gray-800">Price:</span>{' '}
                   <span className="text-3xl">${product.price}</span>
                 </p>
                 <p className="text-xl">
-                  <span className="font-semibold text-gray-800">
-                    Description:
-                  </span>{' '}
-                  <span className="text-lg text-gray-700">
-                    {product.description}
-                  </span>
+                  <span className="font-semibold text-gray-800">Description:</span>{' '}
+                  <span className="text-lg text-gray-700">{product.description}</span>
                 </p>
                 <p className="text-xl">
                   <span className="font-semibold text-gray-800">Rating:</span>{' '}
-                  <span className="text-xl font-medium text-yellow-500">
-                    {product.rating} ★
-                  </span>
+                  <span className="text-xl font-medium text-yellow-500">{product.rating} ★</span>
                 </p>
               </div>
             </div>
           ) : (
-            <p className="text-xl text-red-500 text-center">
-              Product not found
-            </p>
+            <p className="text-xl text-red-500 text-center">Product not found</p>
           )}
         </div>
       </div>
