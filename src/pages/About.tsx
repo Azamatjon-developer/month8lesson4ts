@@ -25,7 +25,7 @@ export class About extends Component<{}, HeaderState> {
 
   componentDidMount() {
     axios.get('https://dummyjson.com/products').then((res) => {
-      this.setState({ data: res.data.products })
+      this.setState({ data: res?.data?.products })
     })
   }
 
@@ -33,7 +33,7 @@ export class About extends Component<{}, HeaderState> {
     const productID = JSON.parse(
       window.localStorage.getItem('productID') as string,
     ) as number
-    const product = this.state.data.find((item) => item.id === productID)
+    const product = this.state?.data?.find((item) => item?.id === productID)
 
     return (
       <div className="container mx-auto p-8">
@@ -45,8 +45,8 @@ export class About extends Component<{}, HeaderState> {
             <div className="md:flex md:items-center md:space-x-12">
               <div className="md:w-1/1 mb-6 md:mb-0">
                 <img
-                  src={product.images[0] || 'https://via.placeholder.com/400'}
-                  alt={product.title}
+                  src={product?.images[0] || 'https://via.placeholder.com/400'}
+                  alt={product?.title}
                   className="w-full h-80 object-cover rounded-lg shadow-lg"
                 />
               </div>
@@ -54,7 +54,7 @@ export class About extends Component<{}, HeaderState> {
               <div className="md:w-1/2 space-y-8">
                 <p className="text-xl">
                   <span className="font-bold text-gray-800">Title:</span>{' '}
-                  <span className="font-semibold text-gray-900">{product.title}</span>
+                  <span className="font-semibold text-gray-900">{product?.title}</span>
                 </p>
                 <p className="text-xl text-green-600">
                   <span className="font-semibold text-gray-800">Price:</span>{' '}
